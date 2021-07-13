@@ -4,9 +4,9 @@ import PSText from "./PSText";
 import PSColors from "../../../assets/colors/PSColors";
 import PSFonts from "../../../assets/fonts/PSFonts";
 
-const PSSolidButton = ({style, text = "Button", backgroundColor = PSColors.RED}) => {
+const PSSolidButton = ({style, onPress, text = "Button", backgroundColor = PSColors.RED}) => {
     return (
-        <TouchableOpacity style={[styles.button, style, {backgroundColor: backgroundColor}]}>
+        <TouchableOpacity style={[styles.button, style, {backgroundColor: backgroundColor}]} onPress={onPress}>
             <PSText text={text} fontFamily={PSFonts.LATO_REGULAR} color={PSColors.WHITE} fontSize={18} />
         </TouchableOpacity>
     );

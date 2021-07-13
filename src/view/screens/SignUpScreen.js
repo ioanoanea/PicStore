@@ -5,10 +5,23 @@ import PSText from "../components/PSText";
 import PSFonts from "../../../assets/fonts/PSFonts";
 import PSInputBox from "../components/PSInputBox";
 import PSSolidButton from "../components/PSSolidButton";
+import firebase from "firebase";
 
 export default class SignUpScreen extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    onSignUp = () => {
+
+        const email = "test@gmail.com";
+        const password = "1234567";
+
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
+            console.log(result);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     render = () => {
