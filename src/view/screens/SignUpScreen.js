@@ -5,23 +5,15 @@ import PSText from "../components/PSText";
 import PSFonts from "../../../assets/fonts/PSFonts";
 import PSInputBox from "../components/PSInputBox";
 import PSSolidButton from "../components/PSSolidButton";
-import firebase from "firebase";
+import {Provider} from "react-redux";
+import {createStore, applyMiddleware} from "redux";
 
 export default class SignUpScreen extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    onSignUp = () => {
-
-        const email = "test@gmail.com";
-        const password = "1234567";
-
-        firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
-            console.log(result);
-        }).catch((error) => {
-            console.log(error);
-        });
+    signUp = () => {
     }
 
     render = () => {
@@ -32,7 +24,7 @@ export default class SignUpScreen extends React.Component {
                 <PSInputBox style={styles.inputBox} iconName="email" placeholder="Email"/>
                 <PSInputBox style={styles.inputBox} iconName="lock" placeholder="Password" secureText={true}/>
                 <PSInputBox style={styles.inputBox} iconName="lock" placeholder="Confirm Password" secureText={true}/>
-                <PSSolidButton style={styles.button} text="Sign Up"/>
+                <PSSolidButton style={styles.button} text="Sign Up" onPress={this.onSignUp}/>
             </View>
         );
     }

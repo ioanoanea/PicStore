@@ -1,16 +1,18 @@
 import React from 'react';
 import LogInScreen from "./src/view/screens/LogInScreen";
-import * as firebase from "firebase";
+import firebase from "firebase";
 import FirebaseConfig from "./src/firebase/FirebaseConfig";
+import SignUpScreen from "./src/view/screens/SignUpScreen";
 
 export default function App() {
 
     // initialize firebase app
-    if(!firebase.app.length){
-        firebase.initializeApp(FirebaseConfig);
+    let firebaseApp;
+    if (!firebaseApp){
+        firebaseApp = firebase.initializeApp(FirebaseConfig);
     }
 
     return (
-        <LogInScreen/>
+        <SignUpScreen/>
     );
 }
