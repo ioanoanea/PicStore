@@ -4,7 +4,7 @@ import firebase from "firebase";
 import FirebaseConfig from "./src/firebase/FirebaseConfig";
 import SignUpScreen from "./src/view/screens/SignUpScreen";
 import {Provider} from "react-redux";
-import appStore from "./src/view/store/AppStore";
+import appStore from "./src/store/AppStore";
 
 export default function App() {
 

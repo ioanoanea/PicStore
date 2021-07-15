@@ -2,30 +2,26 @@ import React from "react";
 import {StyleSheet} from "react-native";
 import PSText from "./PSText";
 
-class PSLoader extends React.Component {
-    constructor(props) {
-        super(props);
-        if (props.loading) {
-            this.backgroundColor = 'blue';
-        } else if (this.props.success) {
-            this.backgroundColor = 'green';
-        } else {
-            this.backgroundColor = 'red';
-        }
-    }
+const PSLoader = ({text, style, show = false, loading = false, success = false}) => {
 
-    render() {
-        return (
-            <PSText
-                text={this.props.text}
-                style={[
-                    styles.dialogMsg,
-                    this.props.style,
-                    {backgroundColor: this.backgroundColor, opacity : this.props.show}
-                ]}
-            />
-        );
+    let backgroundColor;
+    if (loading) {
+        backgroundColor = 'blue';
+    } else if (success) {
+        backgroundColor = 'green';
+    } else {
+        backgroundColor = 'red';
     }
+    return (
+        <PSText
+            text={text}
+            style={[
+                styles.dialogMsg,
+                style,
+                { opacity : show ? 1 : 0, backgroundColor : backgroundColor}
+            ]}
+        />
+    );
 }
 
 const styles = StyleSheet.create({

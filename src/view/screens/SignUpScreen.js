@@ -7,7 +7,7 @@ import PSInputBox from "../components/PSInputBox";
 import PSSolidButton from "../components/PSSolidButton";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {signUp} from "../actions/users/usersActionManager";
+import {signUp} from "../../actions/users/usersActionManager";
 import PSLoader from "../components/PSLoader";
 
 class SignUpScreen extends React.Component {
@@ -22,11 +22,7 @@ class SignUpScreen extends React.Component {
     }
 
     signUp() {
-        if (this.state.password === this.state.confirmPassword) {
-            this.props.signUp(this.state.username, this.state.email, this.state.password);
-        } else {
-            alert("Passwords don't match!");
-        }
+        this.props.signUp(this.state.username, this.state.email, this.state.password, this.state.confirmPassword);
     }
 
     render() {
@@ -71,13 +67,13 @@ class SignUpScreen extends React.Component {
                 <PSLoader
                     text={
                         this.props.success ? "Successful registered!" :
-                            this.props.loading ? "Registering user!" :
+                            this.props.loading ? "Registering user..." :
                                 this.props.msg ? this.props.msg : ""
                     }
                     style={{bottom : 0}}
                     success={this.props.success}
                     loading={this.props.loading}
-                    //show={this.props.showMsg}
+                    show={this.props.showMsg}
                 />
             </View>
         );
@@ -108,8 +104,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (appStore) => ({
+    success : appStore.users.success,
     loading : appStore.users.loading,
-    //showMsg : appStore.user.showMsg,
+    showMsg : appStore.users.showMsg,
     msg : appStore.users.msg,
 });
 

@@ -4,7 +4,7 @@ const initialState = {
     user : null,
     loading : false,
     success : false,
-    showMsg : 0,
+    showMsg : false,
     msg : null,
 }
 
@@ -13,22 +13,24 @@ const usersReducer = (state = initialState, action) => {
         case UsersActionTypes.AUTH_START:
             return {
                 ...state,
+                success : false,
                 loading : true,
-                showMsg : 1,
+                showMsg : true,
             }
-        case UsersActionTypes.SIGN_UP_SUCCESS:
+        case UsersActionTypes.AUTH_SUCCESS:
             return {
                 ...state,
+                user : action.user,
                 success : true,
                 loading : false,
-                showMsg : 1,
+                showMsg : true,
             }
-        case UsersActionTypes.SIGN_UP_FAIL:
+        case UsersActionTypes.AUTH_FAIL:
             return {
                 ...state,
                 success : false,
                 loading : false,
-                showMsg : 1,
+                showMsg : true,
                 msg : action.error,
             }
         default:
