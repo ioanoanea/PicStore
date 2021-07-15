@@ -3,16 +3,19 @@ import LogInScreen from "./src/view/screens/LogInScreen";
 import firebase from "firebase";
 import FirebaseConfig from "./src/firebase/FirebaseConfig";
 import SignUpScreen from "./src/view/screens/SignUpScreen";
+import {Provider} from "react-redux";
+import appStore from "./src/view/store/AppStore";
 
 export default function App() {
 
     // initialize firebase app
-    let firebaseApp;
-    if (!firebaseApp){
-        firebaseApp = firebase.initializeApp(FirebaseConfig);
+    if (!firebase.apps.length){
+        firebase.initializeApp(FirebaseConfig);
     }
 
     return (
-        <SignUpScreen/>
+        <Provider store={appStore}>
+            <SignUpScreen/>
+        </Provider>
     );
 }

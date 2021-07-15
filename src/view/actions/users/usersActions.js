@@ -1,5 +1,11 @@
 import UsersActionTypes from "./usersActionTypes";
 
+export const onAuthStart = () => {
+    return {
+        type : UsersActionTypes.AUTH_START,
+    };
+};
+
 export const onSignUpSuccess = () => {
     return {
         type : UsersActionTypes.SIGN_UP_SUCCESS,

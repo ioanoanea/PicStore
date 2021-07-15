@@ -3,7 +3,7 @@ import {StyleSheet, TextInput, View} from "react-native";
 import PSColors from "../../../assets/colors/PSColors";
 import PSIcon from "./PSIcon";
 
-const PSInputBox = ({style, iconName, placeholder, secureText = false}) => {
+const PSInputBox = ({style, iconName, placeholder, onChangeText, secureText = false}) => {
     return (
         <View style={[styles.box, style]}>
             <PSIcon name={iconName} size={16} color={PSColors.GRAY}/>
@@ -12,6 +12,7 @@ const PSInputBox = ({style, iconName, placeholder, secureText = false}) => {
                 placeholder={placeholder}
                 placeholderTextColor={PSColors.GRAY}
                 secureTextEntry={secureText}
+                onChangeText={onChangeText}
             />
         </View>
     );
@@ -20,7 +21,6 @@ const PSInputBox = ({style, iconName, placeholder, secureText = false}) => {
 const styles = StyleSheet.create({
     box : {
         width: 100,
-        paddingVertical: 8,
         paddingHorizontal: 5,
         borderBottomWidth: 0.5,
         borderBottomColor: PSColors.DARK_GRAY,
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     input : {
         width: '90%',
         fontSize: 18,
+        paddingVertical: 8,
         color: PSColors.WHITE,
     }
 });

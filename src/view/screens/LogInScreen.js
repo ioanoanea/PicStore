@@ -12,7 +12,7 @@ export default class LogInScreen extends React.Component {
         super(props);
     }
 
-    render = () => {
+    render() {
         return (
             <View style={styles.container}>
                 <PSText style={styles.textLogIn} text="Log In" fontSize={24} fontFamily={PSFonts.LATO_LIGHT}/>
